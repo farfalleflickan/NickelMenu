@@ -1,3 +1,7 @@
+Modified NickelMenu that hides the "more" button in the settings menu.
+
+---
+
 <h1 align="center">NickelMenu</h1>
 
 The easiest way to launch custom scripts, change hidden settings, and run actions on Kobo eReaders.

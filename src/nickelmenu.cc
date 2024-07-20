@@ -110,7 +110,7 @@ static struct nh_hook NickelMenuHook[] = {
     {.sym = "_ZN28AbstractNickelMenuController18createMenuTextItemEP5QMenuRK7QStringbbS4_", .sym_new = "_nm_menu_hook", .lib = "libnickel.so.1.0.0", .out = nh_symoutptr(AbstractNickelMenuController_createMenuTextItem)}, //libnickel 4.6 * _ZN28AbstractNickelMenuController18createMenuTextItemEP5QMenuRK7QStringbbS4_
 
     // bottom nav main menu button injection (15505+)
-    {.sym = "_ZN11MainNavViewC1EP7QWidget", .sym_new = "_nm_menu_hook2", .lib = "libnickel.so.1.0.0", .out = nh_symoutptr(MainNavView_MainNavView), .desc = "bottom nav main menu button injection (15505+)", .optional = true}, //libnickel 4.23.15505 * _ZN11MainNavViewC1EP7QWidget
+    {.sym = "_ZN8MoreViewC1EP7QWidget", .sym_new = "_nm_menu_hook2", .lib = "libnickel.so.1.0.0", .out = nh_symoutptr(MainNavView_MainNavView), .desc = "bottom nav main menu button injection (15505+)", .optional = true}, //libnickel 4.23.15505 * _ZN11MainNavViewC1EP7QWidget
 
     // selection menu injection
     {.sym = "_ZN23SelectionMenuController11addMenuItemEP17SelectionMenuViewP12MenuTextItemPKc", .sym_new = "_nm_menu_hook3", .lib = "libnickel.so.1.0.0", .out = nh_symoutptr(SelectionMenuController_addMenuItem),  .desc = "selection menu injection",                     .optional = true}, //libnickel 4.20.14622 * _ZN23SelectionMenuController11addMenuItemEP17SelectionMenuViewP12MenuTextItemPKc
@@ -399,7 +399,7 @@ extern "C" __attribute__((visibility("default"))) void _nm_menu_hook2(MainNavVie
         QWidget::connect(menu, &QMenu::aboutToHide, menu, &QWidget::deleteLater);
 
         menu->ensurePolished();
-        menu->popup(btn->mapToGlobal(btn->geometry().topRight() - QPoint(0, menu->sizeHint().height())));
+        menu->popup(btn->mapToGlobal(btn->geometry().bottomRight()));
     });
 
     bl->addWidget(btn, 1);
